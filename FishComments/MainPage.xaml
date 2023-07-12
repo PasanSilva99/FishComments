@@ -1,0 +1,66 @@
+﻿<Page x:Class="FishComments.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:FishComments"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid RowSpacing="20" Margin="10" CornerRadius="10"> 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="url"
+                     PlaceholderText="Paste youtube url" TextChanged="url_TextChanged"/>
+            <Button Grid.Column="1" Click="Navigate_Click">
+                <Button.Content>
+                    <SymbolIcon Symbol="Find" />
+                </Button.Content>
+            </Button>
+        </Grid>
+        <controls:WebView2 x:Name="WebView2" Grid.Row="1"
+                           Source="https://www.youtube.com/watch?v=n0S9V9YmNS8" Loaded="WebView2_Loaded"/>
+
+        <Grid Margin="10,10,10,17"
+              Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"
+                    Content="Start Capture"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    Click="Button_Click" />
+            <ListView x:Name="commentsList"
+                      Margin="0,20,0,0" Grid.Row="1">
+                
+            </ListView>
+
+            <Button Content="Export" Grid.Row="3" HorizontalAlignment="Stretch" x:Name="Export" Click="Export_Click">
+                
+            </Button>
+
+            <TextBlock Grid.Row="2" x:Name="Number_of_comments" Text="0 Comments"
+                       Margin="0,10,0,8" />
+
+        </Grid>
+
+
+    </Grid>
+</Page>
